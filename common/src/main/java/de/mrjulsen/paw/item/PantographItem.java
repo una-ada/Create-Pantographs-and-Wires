@@ -26,7 +26,7 @@ public abstract class PantographItem extends BlockItem implements GeoItem {
 		this.expanded = expanded;
 	}
 
-	public static PantographItem create(Block block, Properties properties, boolean expaned) {
+	public static PantographItem create(Block block, Properties properties, boolean expanded) {
 		throw new AssertionError();
 	}
 

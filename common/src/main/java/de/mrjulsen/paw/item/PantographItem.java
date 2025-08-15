@@ -1,8 +1,12 @@
 package de.mrjulsen.paw.item;
 
+import de.mrjulsen.paw.PantographsAndWires;
 import de.mrjulsen.paw.blockentity.PantographBlockEntity;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -10,9 +14,13 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.molang.MolangParser;
 import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.model.DefaultedBlockGeoModel;
+import software.bernie.geckolib.renderer.GeoItemRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public abstract class PantographItem extends BlockItem implements GeoItem {
+import java.util.function.Consumer;
+
+public class PantographItem extends BlockItem implements GeoItem {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 	private static final RawAnimation ANIM_WIRE_CONTACT = RawAnimation.begin().thenPlayAndHold("wire_contact");
@@ -27,7 +35,7 @@ public abstract class PantographItem extends BlockItem implements GeoItem {
 	}
 
 	public static PantographItem create(Block block, Properties properties, boolean expanded) {
-		throw new AssertionError();
+		return new PantographItem(block, properties, expanded);
 	}
 
 	@Override
@@ -52,4 +60,19 @@ public abstract class PantographItem extends BlockItem implements GeoItem {
 	public AnimatableInstanceCache getAnimatableInstanceCache() {
 		return cache;
 	}
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private GeoItemRenderer<PantographItem> renderer = null;
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null)
+                    this.renderer = new GeoItemRenderer<>(new DefaultedBlockGeoModel<>(new ResourceLocation(PantographsAndWires.MOD_ID, "pantograph")));
+
+                return this.renderer;
+            }
+        });
+    }
 }

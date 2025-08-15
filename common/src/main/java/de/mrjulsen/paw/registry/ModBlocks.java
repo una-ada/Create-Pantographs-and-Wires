@@ -62,6 +62,8 @@ public class ModBlocks {
 	public static final BlockEntry<PantographBlock> PANTOGRAPH = PantographsAndWires.REGISTRATE.block("pantograph", PantographBlock::new)
 		.initialProperties(() -> Blocks.IRON_BLOCK)
 		.transform(TagGen.pickaxeOnly())
+        .onRegister(ctx -> MovementBehaviour.REGISTRY.register(ctx, new PantographMovementBehaviour()))
+        .onRegister(ctx -> MovingInteractionBehaviour.REGISTRY.register(ctx, new PantographInteractionBehaviour()))
 		.register();
 
 	public static final BlockEntry<LatticeMastBlock> LATTICE_MAST = PantographsAndWires.REGISTRATE.block("lattice_mast", LatticeMastBlock::new)
@@ -219,8 +221,6 @@ public class ModBlocks {
     public static void init() {
 		registerCantilevers();
 		registerDoubleCantilevers();
-        MovementBehaviour.REGISTRY.register(PANTOGRAPH.get(), new PantographMovementBehaviour());
-        MovingInteractionBehaviour.REGISTRY.register(PANTOGRAPH.get(), new PantographInteractionBehaviour());
 	}
 
 	public static record CantileverKey(int size, EInsulatorType insulatorType) {

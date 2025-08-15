@@ -1,7 +1,7 @@
 package de.mrjulsen.paw.block.abstractions;
 
 import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 
 import de.mrjulsen.paw.util.Utils;
 import de.mrjulsen.wires.block.IWireConnector;

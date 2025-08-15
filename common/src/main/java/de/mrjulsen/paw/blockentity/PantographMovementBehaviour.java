@@ -4,7 +4,7 @@ import org.joml.Vector3d;
 
 import com.simibubi.create.content.contraptions.behaviour.MovementBehaviour;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;

@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 
 import de.mrjulsen.paw.block.abstractions.IConicalShape;
 import de.mrjulsen.paw.block.abstractions.IRotatableBlock;

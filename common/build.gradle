@@ -3,8 +3,7 @@ plugins {
 }
 
 architectury {
-    platformSetupLoomIde()
-    forge()
+    common 'forge'
 }
 
 

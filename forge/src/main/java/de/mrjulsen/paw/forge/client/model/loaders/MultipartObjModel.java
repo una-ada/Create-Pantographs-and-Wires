@@ -5,7 +5,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.mojang.math.Axis;
 import com.mojang.math.Transformation;
-import com.simibubi.create.foundation.utility.VecHelper;
+import net.createmod.catnip.math.VecHelper;
 
 import joptsimple.internal.Strings;
 import net.minecraft.client.renderer.LightTexture;

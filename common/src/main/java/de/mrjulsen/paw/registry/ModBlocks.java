@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import com.simibubi.create.AllInteractionBehaviours;
-import com.simibubi.create.AllMovementBehaviours;
+import com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour;
+import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.data.TagGen;
@@ -62,8 +62,6 @@ public class ModBlocks {
 	public static final BlockEntry<PantographBlock> PANTOGRAPH = PantographsAndWires.REGISTRATE.block("pantograph", PantographBlock::new)
 		.initialProperties(() -> Blocks.IRON_BLOCK)
 		.transform(TagGen.pickaxeOnly())
-		.onRegister(AllMovementBehaviours.movementBehaviour(new PantographMovementBehaviour()))
-		.onRegister(AllInteractionBehaviours.interactionBehaviour(new PantographInteractionBehaviour()))
 		.register();
 
 	public static final BlockEntry<LatticeMastBlock> LATTICE_MAST = PantographsAndWires.REGISTRATE.block("lattice_mast", LatticeMastBlock::new)
@@ -221,6 +219,8 @@ public class ModBlocks {
     public static void init() {
 		registerCantilevers();
 		registerDoubleCantilevers();
+        MovementBehaviour.REGISTRY.register(PANTOGRAPH.get(), new PantographMovementBehaviour());
+        MovingInteractionBehaviour.REGISTRY.register(PANTOGRAPH.get(), new PantographInteractionBehaviour());
 	}
 
 	public static record CantileverKey(int size, EInsulatorType insulatorType) {

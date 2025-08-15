@@ -7,10 +7,14 @@ architectury {
     forge()
 }
 
+
 loom {
-    file("src/main/resources/pantographsandwires.accesswidener")
+    accessWidenerPath = file("src/main/resources/pantographsandwires.accesswidener")
 
     forge {
+        convertAccessWideners = true
+        extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+
         mixinConfig "pantographsandwires.mixins.json"
     }
 }

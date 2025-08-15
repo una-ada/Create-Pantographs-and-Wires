@@ -32,9 +32,4 @@ public class PantographMovementBehaviour implements MovementBehaviour {
             be.contraptionTick();
         }
 	}
-
-    @Override
-    public boolean renderAsNormalBlockEntity() {
-        return true;
-    }
 }

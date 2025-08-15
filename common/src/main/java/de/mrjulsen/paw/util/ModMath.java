@@ -108,7 +108,7 @@ public class ModMath {
      * Scales the AABB along an axis by a factor with an optional pivot.
      *
      * @param axis The axis along which scaling occurs.
-     * @param factor The scaling factor (1.0 = no change, >1.0 = increase in size, <1.0 = decrease in size).
+     * @param factor The scaling factor (1.0 = no change, &gt;1.0 = increase in size, &lt;1.0 = decrease in size).
      * @param pivot The pivot point (default = 0.5 = center).
      * @return The scaled AABB.
      */
@@ -158,7 +158,7 @@ public class ModMath {
      * Scales the AABB along an axis, keeping one side fixed.
      *
      * @param axis The axis to scale along.
-     * @param factor The scaling factor (>1.0 = increase, <1.0 = decrease).
+     * @param factor The scaling factor (&gt;1.0 = increase, &lt;1.0 = decrease).
      * @param direction The direction that remains fixed.
      * @return The rescaled AABB.
      */

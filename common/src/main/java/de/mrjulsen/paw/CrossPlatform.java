@@ -1,17 +1,26 @@
 package de.mrjulsen.paw;
 
-import dev.architectury.injectables.annotations.ExpectPlatform;
+import de.mrjulsen.paw.config.ModClientConfig;
+import de.mrjulsen.paw.config.ModCommonConfig;
+import de.mrjulsen.paw.config.ModServerConfig;
+import dev.architectury.platform.Platform;
+import dev.architectury.utils.Env;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
 
 public final class CrossPlatform {
-        
-    @ExpectPlatform
+
     public static void registerConfig() {
-        throw new AssertionError();
+        if (Platform.getEnvironment() == Env.CLIENT) {
+            ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModClientConfig.SPEC, PantographsAndWires.MOD_ID + "-client.toml");
+        }
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModCommonConfig.SPEC, PantographsAndWires.MOD_ID + "-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ModServerConfig.SPEC, PantographsAndWires.MOD_ID + "-server.toml");
     }
 
-    @ExpectPlatform
     public static double interactionRange(Player player) {
-        throw new AssertionError();
+        return player.getAttribute(ForgeMod.BLOCK_REACH.get()).getValue();
     }
 }

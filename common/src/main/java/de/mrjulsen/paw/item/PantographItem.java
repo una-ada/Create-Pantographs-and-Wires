@@ -1,7 +1,6 @@
 package de.mrjulsen.paw.item;
 
 import de.mrjulsen.paw.blockentity.PantographBlockEntity;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import software.bernie.geckolib.animatable.GeoItem;
@@ -27,7 +26,6 @@ public abstract class PantographItem extends BlockItem implements GeoItem {
 		this.expanded = expanded;
 	}
 
-	@ExpectPlatform
 	public static PantographItem create(Block block, Properties properties, boolean expaned) {
 		throw new AssertionError();
 	}

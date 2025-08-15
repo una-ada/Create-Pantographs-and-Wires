@@ -2,7 +2,7 @@ package de.mrjulsen.paw.blockentity;
 
 import org.joml.Vector3d;
 
-import com.simibubi.create.content.contraptions.behaviour.MovementBehaviour;
+import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import net.createmod.catnip.math.VecHelper;
 

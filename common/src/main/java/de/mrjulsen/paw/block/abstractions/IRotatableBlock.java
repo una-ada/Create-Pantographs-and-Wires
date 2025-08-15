@@ -3,8 +3,8 @@ package de.mrjulsen.paw.block.abstractions;
 import javax.annotation.Nullable;
 
 import de.mrjulsen.paw.data.BlockModificationData;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.world.entity.player.Player;
@@ -87,7 +87,7 @@ public interface IRotatableBlock {
      * @param original The vanilla {@code BlockHitResult} which should be updated.
      * @return The updated {@code BlockHitResult}.
      */
-    @Environment(EnvType.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     BlockHitResult checkClickedFace(Level level, Player player, BlockHitResult original);
 
     /**

@@ -6,7 +6,6 @@ import de.mrjulsen.wires.render.WireRenderData;
 import de.mrjulsen.wires.render.WireRenderPoint;
 import de.mrjulsen.wires.render.WireRenderPoint.VertexCorner;
 import de.mrjulsen.mcdragonlib.util.MathUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 
@@ -18,16 +17,6 @@ public final class WireBuilder {
 	
 	public static int calcSegmentsCount(float arcLength, float distance, float radius) {
 		float multiplier = 1;
-		switch (Minecraft.getInstance().options.graphicsMode().get()) {
-			case FAST:
-				multiplier = 0.5f;
-				break;
-			case FABULOUS:
-				multiplier = 2f;
-				break;
-			default:
-				break;
-		}
 		return Math.max(1, (int)(Math.max(Math.ceil(arcLength * 16 / radius), distance) * multiplier));
 	}
 
